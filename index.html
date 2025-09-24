@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checker</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+
+            <h1>Checker</h1>
+
+            <p>Check single or bulk cards for live/dead status.</p>
+
+        </header>
+
+        
+
+        <section id="single-check">
+
+            <h2>Single Card Check</h2>
+
+            <form id="single-form">
+
+                <input type="text" id="card-number" placeholder="Card Number" maxlength="19">
+
+                <input type="text" id="expiry" placeholder="MM/YY" maxlength="5">
+
+                <input type="text" id="cvc" placeholder="CVC" maxlength="4">
+
+                <button type="submit">Check Card</button>
+
+            </form>
+
+            <div id="result"></div>
+
+        </section>
+
+        
+
+        <section id="bulk-check">
+
+            <h2>Bulk Check (CSV: number|expiry|cvc)</h2>
+
+            <input type="file" id="csv-file" accept=".csv">
+
+            <button id="bulk-check-btn">Check Bulk</button>
+
+            <div id="bulk-results"></div>
+
+        </section>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
