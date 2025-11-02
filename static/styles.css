@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #0A0A0A, #1A1A1A);
+    background-size: 400% 400%;
+    animation: galaxyShift 10s ease-in-out infinite;
+    font-family: Arial, sans-serif;
+    color: #00FF00;
+    overflow: hidden;
+}
+
+@keyframes galaxyShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 20px #800080;
+}
+
+h1 {
+    text-align: center;
+    color: #00FF00;
+    text-shadow: 0 0 10px #800080;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    color: #00FF00;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background: #1A1A1A;
+    border: 1px solid #800080;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background: #00FF00;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    box-shadow: 0 0 15px #00FF00;
+}
+
+#results {
+    margin-top: 20px;
+    padding: 10px;
+    background: #1A1A1A;
+    border: 1px solid #800080;
+    color: #00FF00;
+    white-space: pre-line;
+    border-radius: 5px;
+}
