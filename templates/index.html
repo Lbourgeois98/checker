@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Galaxy Card Checker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Neon Galaxy Card Checker</h1>
+        <form id="cardForm">
+            <label for="card_number">Card Number:</label>
+            <input type="text" id="card_number" name="card_number" required>
+            
+            <label for="exp_month">Exp Month (MM):</label>
+            <input type="number" id="exp_month" name="exp_month" min="1" max="12" required>
+            
+            <label for="exp_year">Exp Year (YY):</label>
+            <input type="number" id="exp_year" name="exp_year" min="20" required>
+            
+            <label for="cvc">CVC:</label>
+            <input type="text" id="cvc" name="cvc" required>
+            
+            <button type="submit">Check Card</button>
+        </form>
+        <div id="results"></div>
+    </div>
+    <script>
+        document.getElementById('cardForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = {
+                card_number: formData.get('card_number'),
+                exp_month: formData.get('exp_month'),
+                exp_year: formData.get('exp_year'),
+                cvc: formData.get('cvc')
+            };
+            
+            fetch('/check', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                let output = '';
+                for (const key in result) {
+                    output += `${key}: ${result[key]}\n`;
+                }
+                document.getElementById('results').textContent = output;
+            })
+            .catch(error => {
+                document.getElementById('results').textContent = 'Error: ' + error.message;
+            });
+        });
+    </script>
+</body>
+</html>
